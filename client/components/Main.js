@@ -2,6 +2,8 @@ import Image from 'next/image'
 import { RiSettings3Fill } from 'react-icons/ri'
 import { AiOutlineDown } from 'react-icons/ai'
 import ethLogo from '../assets/eth.png'
+import { useContext } from 'react'
+import { TransactionContext } from '../context/TransactionContext'
 
 const style = {
   wrapper: `w-screen flex items-center justify-center mt-14`,
@@ -17,6 +19,19 @@ const style = {
   confirmButton: `bg-[#2172E5] my-2 rounded-2xl py-6 px-8 text-xl font-semibold flex items-center justify-center cursor-pointer border border-[#2172E5] hover:border-[#234169]`,
 }
 const Main = () => {
+  const { formData, handleChange, sendTransaction } =
+    useContext(TransactionContext)
+
+  const handleSubmit = async (e) => {
+    const { addressTo, amount } = formData
+    e.preventDefault()
+
+    console.log(addressTo, amount)
+    if (!addressTo || !amount) return
+
+    sendTransaction()
+  }
+
   return (
     <div className={style.wrapper}>
       <div className={style.content}>
