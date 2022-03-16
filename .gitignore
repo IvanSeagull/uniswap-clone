@@ -1,2 +1,4 @@
 /client/node_modules
 /studio/node_modules
+/smart_contract/hardhat.config.js
+
